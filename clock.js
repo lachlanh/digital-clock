@@ -22,8 +22,8 @@ $(function() {
 	fl = Math.floor;
 
 	// Set the initial theme and 12 vs. 24
-	setTheme(getPref('theme', 'green'));
-	setHours(getPref('hr', 12));
+	setTheme(getPref('theme', 'red'));
+	setHours(getPref('hr', 24));
 
 	// Run the clock
 	updateTime();
@@ -51,9 +51,9 @@ $(function() {
 		separator.toggleClass('on');
 
 		now = new Date();
-		h = now.getHours();
-		m = now.getMinutes();
-		s = now.getSeconds();
+		h = now.getUTCHours();
+		m = now.getUTCMinutes();
+		s = now.getUTCSeconds();
 		nowstr = now.toString();
 		tz = (nowstr.match(/\b([A-Z]{1,4}).$/) || ['']).pop();
 		hours = getPref('hr', 12);
